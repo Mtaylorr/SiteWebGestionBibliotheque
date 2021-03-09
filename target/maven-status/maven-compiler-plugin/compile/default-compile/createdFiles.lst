@@ -1,2 +1,6 @@
+com\ensta\librarymanager\models\Membre.class
+com\ensta\librarymanager\models\Emprunt.class
 com\ensta\librarymanager\persistence\ConnectionManager.class
+com\ensta\librarymanager\models\Livre.class
+com\ensta\librarymanager\models\Membre$Abonnement.class
 com\ensta\librarymanager\utils\FillDatabase.class
