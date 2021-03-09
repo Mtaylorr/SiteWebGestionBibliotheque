@@ -1,7 +1,7 @@
 package ensta;
 
-import com.ensta.librarymanager.models.*;
-import com.ensta.librarymanager.models.Membre;
+import com.ensta.librarymanager.modele.*;
+import com.ensta.librarymanager.modele.Membre;
 
 import java.time.LocalDate;
 

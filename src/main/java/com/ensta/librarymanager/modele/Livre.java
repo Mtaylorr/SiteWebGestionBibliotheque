@@ -1,4 +1,4 @@
-package com.ensta.librarymanager.models;
+package com.ensta.librarymanager.modele;
 
 public class Livre {
     private int id;
