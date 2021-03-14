@@ -47,6 +47,7 @@ public class LivreDaoImpl implements  LivreDao {
         try {
             connection = ConnectionManager.getConnection();
             PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1,Integer.toString(id));
             ResultSet rs = statement.executeQuery();
 
             if(rs.next()){
