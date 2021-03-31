@@ -93,9 +93,6 @@ public class EmpruntServiceImpl implements EmpruntService{
         }catch(Exception e){
             throw new ServiceException();
         }
-        if(isLivreDispo(idLivre)){
-            System.out.println("livre pas dispo");
-        }
         if((livre==null)|| (!isLivreDispo(idLivre)) || (membre==null) || (!isEmpruntPossible(membre))  )
             throw new ServiceException();
         try{
@@ -112,7 +109,9 @@ public class EmpruntServiceImpl implements EmpruntService{
             EmpruntDaoImpl empruntDaoImpl = EmpruntDaoImpl.getInstance();
             Emprunt emprunt = empruntDaoImpl.getById(id);
             emprunt.setDateRetour(LocalDate.now());
+            System.out.println(emprunt);
             empruntDaoImpl.update(emprunt);
+
         }catch(Exception e){
             throw new ServiceException();
         }
@@ -146,13 +145,14 @@ public class EmpruntServiceImpl implements EmpruntService{
     public boolean isEmpruntPossible(Membre membre) throws ServiceException {
         List<Emprunt> emprunts=null;
         Membre.Abonnement abonnement = membre.getAbonnement();
-        int mx = (abonnement== Membre.Abonnement.BASIC ?2 : (abonnement== Membre.Abonnement.PREMIUM?5:20));
+        int mx = (abonnement == Membre.Abonnement.BASIC ?2 : (abonnement== Membre.Abonnement.PREMIUM?5:20));
+
         try{
             EmpruntDaoImpl empruntDaoImpl = EmpruntDaoImpl.getInstance();
             emprunts = empruntDaoImpl.getListCurrentByMembre(membre.getId());
         }catch(Exception e){
             throw new ServiceException();
         }
-        return (emprunts.size()<=mx);
+        return (emprunts.size()<mx);
     }
 }

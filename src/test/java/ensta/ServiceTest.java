@@ -59,8 +59,7 @@ public class ServiceTest {
                 membre.getPrenom(),
                 membre.getAdresse(),
                 membre.getEmail(),
-                membre.getTelephone(),
-                membre.getAbonnement());
+                membre.getTelephone());
         int nvLivreId = livreServiceImpl.create(livre.getTitre(),
                 livre.getAuteur(),
                 livre.getIsbn());

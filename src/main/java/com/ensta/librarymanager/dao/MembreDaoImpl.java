@@ -76,7 +76,7 @@ public class MembreDaoImpl  implements MembreDao{
     }
 
     @Override
-    public int create(String nom, String prenom, String adresse, String email, String telephone, Membre.Abonnement abonnement) throws DaoException {
+    public int create(String nom, String prenom, String adresse, String email, String telephone) throws DaoException {
         String query = "INSERT INTO membre(nom, prenom, adresse, email, telephone,\n" +
                 "abonnement)\n" +
                 "VALUES (?, ?, ?, ?, ?, ?)";
@@ -90,7 +90,7 @@ public class MembreDaoImpl  implements MembreDao{
             statement.setString(3,adresse);
             statement.setString(4,email);
             statement.setString(5,telephone);
-            statement.setString(6,abonnement.name().toString());
+            statement.setString(6,"BASIC");
             statement.executeUpdate();
             ResultSet rs = statement.getGeneratedKeys();
             if(rs.next()){

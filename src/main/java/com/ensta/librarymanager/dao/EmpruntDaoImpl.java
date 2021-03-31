@@ -98,7 +98,7 @@ public class EmpruntDaoImpl implements EmpruntDao {
                         membre,
                         livre,
                         rs.getDate("dateEmprunt").toLocalDate(),
-                        rs.getDate("dateRetour")==null ? null : rs.getDate("dateRetour").toLocalDate()));
+                        null));
             }
             statement.close();
         } catch (SQLException throwables) {
@@ -198,13 +198,13 @@ public class EmpruntDaoImpl implements EmpruntDao {
     @Override
     public Emprunt getById(int id) throws DaoException {
         Emprunt result = null;
-        String query = "SELECT e.id AS id, idMembre, nom, prenom, adresse, email,\n" +
+        String query = "SELECT e.id AS idEmprunt, idMembre, nom, prenom, adresse, email,\n" +
                 "telephone, abonnement, idLivre, titre, auteur, isbn, dateEmprunt,\n" +
                 "dateRetour\n" +
                 "FROM emprunt AS e\n" +
                 "INNER JOIN membre ON membre.id = e.idMembre\n" +
                 "INNER JOIN livre ON livre.id = e.idLivre\n" +
-                "WHERE dateRetour IS NULL AND livre.id = ?";
+                "WHERE e.id = ?;";
         Connection connection = null;
         try {
             connection = ConnectionManager.getConnection();
@@ -236,6 +236,7 @@ public class EmpruntDaoImpl implements EmpruntDao {
         } catch (SQLException throwables) {
             throw new DaoException();
         }
+
         return result;
     }
 
