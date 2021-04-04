@@ -5,9 +5,6 @@
     <error-code>500</error-code>
     <location>/WEB-INF/View/error_500.jsp</location>
   </error-page>
-  <welcome-file-list>
-    <welcome-file>/LibraryManager/index.html</welcome-file>
-  </welcome-file-list>
   <servlet>
     <servlet-name>dashboard</servlet-name>
     <servlet-class>LibraryManager.com.ensta.librarymanager.servlet.DashboardServlet</servlet-class>

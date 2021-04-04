@@ -37,8 +37,8 @@ public class ServiceTest {
         }
 
         Membre membre = new Membre(1,
-                "Mahdii",
-                "cheik",
+                "aaaa",
+                "cccc",
                 "91120",
                 "cheikh@",
                 "289",
